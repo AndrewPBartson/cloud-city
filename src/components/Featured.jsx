@@ -1,10 +1,13 @@
 import { useSelector } from 'react-redux'
 import ItemIntro from './ItemIntro'
+import { selectAllItemsArray } from '../state/itemsSlice'
 
 const Featured = () => {
-  const items = useSelector((state) => state.items.items)
+  // const items = useSelector((state) => state.items.items)
   const status = useSelector((state) => state.items.status)
   // const error = useSelector((state) => state.items.error)
+  const allItems = useSelector(selectAllItemsArray)
+  const featuredItems = allItems.filter((item) => item.ratingInt >= 30)
 
   return (
     <section id='featured'>
@@ -19,7 +22,7 @@ const Featured = () => {
             {status === 'loading' ? (
               <p>Loading...</p>
             ) : (
-              items
+              featuredItems
                 .filter((item) => item.rating > 3.0)
                 .slice(0, 4)
                 .map((item) => <ItemIntro item={item} key={item.id} />)

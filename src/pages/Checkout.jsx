@@ -102,7 +102,7 @@ const Checkout = () => {
                 </div>
                 <div className='total__item total__tax'>
                   <span className='left_margin'>Items ({totalQuantity})</span>
-                  <span className='right_margin'>${totalPrice}</span>
+                  <span className='right_margin'>${totalPrice.toFixed(2)}</span>
                 </div>
                 <div className='total__item total__tax'>
                   <span className='left_margin'>Shipping</span>
@@ -117,7 +117,8 @@ const Checkout = () => {
                 <div className='total__item total__tax'>
                   <span className='show_order left_margin'>Order total</span>
                   <span className='show_order right_margin'>
-                    ${(totalPrice * (taxRate + 1)).toFixed(2)}
+                    $
+                    {(totalPrice * (taxRate + 1) + shippingFlatRate).toFixed(2)}
                   </span>
                 </div>
 

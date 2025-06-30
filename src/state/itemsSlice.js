@@ -57,6 +57,10 @@ export const selectFilteredSortedItems = (state) => {
   return items
 }
 
+// convert allItems object to array
+export const selectAllItemsArray = (state) =>
+  Object.values(state.items.allItems)
+
 // Async thunk to load from localStorage, or fetch from OMDB
 export const loadItems = createAsyncThunk(
   'items/loadItems',
@@ -88,8 +92,10 @@ export const loadItems = createAsyncThunk(
             // console.log('savedQuery', savedQuery)
             // console.log('inside level 6')
             currentItems = await fetchMovies(savedQuery)
-          } else {
-            // savedQuery is empty
+          }
+          // if currentItems is still empty
+          // no new query / no saved items / no (valid) savedQuery
+          if (currentItems.length === 0) {
             // search by user location
             // console.log('inside level 7')
             let userLocation = await getUserLocation()
@@ -100,13 +106,15 @@ export const loadItems = createAsyncThunk(
         }
       }
       // final steps -
-      saveToLocalStorage('items', currentItems)
+      if (currentItems.length !== 0) {
+        saveToLocalStorage('items', currentItems)
+      }
       // console.log('items:', currentItems)
       // console.log('outside again')
 
       return currentItems
     } catch (err) {
-      // console.error('loadItems error:', err)
+      console.error('loadItems error:', err)
       return rejectWithValue('Failed to load items')
     }
   }

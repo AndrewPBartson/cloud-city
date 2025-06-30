@@ -72,7 +72,7 @@ export function fetchMovies(searchQuery) {
     })
 }
 
-export const getUserLocation = (fallback = 'born to run') => {
+export const getUserLocation = (fallback = 'Born to Run') => {
   return fetch('https://geolocation-db.com/json/')
     .then((response) => response.json())
     .then((geoData) => geoData.state || fallback)
