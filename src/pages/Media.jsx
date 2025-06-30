@@ -1,0 +1,81 @@
+import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
+import { selectFilteredSortedItems } from '../state/itemsSlice'
+import ItemIntro from '../components/ItemIntro'
+import SearchBar from '../components/SearchBar'
+import SortAndFilter from '../components/SortAndFilter'
+import YouAreLost from '../assets/no_results.jpg'
+
+const Media = () => {
+  const items = useSelector(selectFilteredSortedItems)
+  const status = useSelector((state) => state.items.status)
+  // const searchQuery = useSelector((state) => state.items.searchQuery)
+  const [imageLoaded, setImageLoaded] = useState(false)
+
+  const isLoading = status === 'loading'
+  const isError = status === 'failed'
+  const isSuccess = status === 'succeeded'
+  const noResults = (items.length === 0 && isSuccess) || isError
+
+  let content = null
+
+  if (isLoading) {
+    content = Array(8)
+      .fill(null)
+      .map((_, i) => <ItemIntro key={`skeleton-${i}`} />)
+  } else if (isError) {
+    content = (
+      <div className='no-results'>
+        <img src={YouAreLost} alt='No results or server error' />
+        <h3 className='error-text'>No way! The server returned an error!</h3>
+      </div>
+    )
+  } else if (noResults) {
+    content = (
+      <div className='no-results'>
+        <img
+          src={YouAreLost}
+          alt='No results'
+          onLoad={() => setImageLoaded(true)}
+          className={`no-results__img ${imageLoaded ? 'loaded' : ''}`}
+        />
+        {imageLoaded && (
+          <h3>
+            Your search returned <span className='error-text'>No Results</span>
+          </h3>
+        )}
+      </div>
+    )
+  } else {
+    content = items
+      .slice(0, 20)
+      .map((item) => <ItemIntro item={item} key={item.id} />)
+  }
+
+  return (
+    <div className='media_body'>
+      <main id='media_main'>
+        <section>
+          <div className='media_container'>
+            <div className='row'>
+              <div className='media_ui_wrapper'>
+                <div className='search_ui'>
+                  <h2 className='section__title search_title'>
+                    Search Cloud City
+                  </h2>
+                  <SearchBar />
+                </div>
+                <div className='sort_ui'>
+                  <SortAndFilter />
+                </div>
+              </div>
+              <div className='books'>{content}</div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  )
+}
+
+export default Media

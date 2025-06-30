@@ -1,25 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+// import { useSelector } from 'react-redux'
+import { loadItems } from './state/itemsSlice'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import './css/index.css'
+import ScrollToTop from './components/mini-components/ScrollToTop'
+import Nav from './components/Nav'
+import Home from './pages/Home'
+import Media from './pages/Media'
+import MediaSpotlight from './pages/MediaSpotlight'
+import Footer from './components/Footer'
+import Cart from './pages/Cart'
+import Checkout from './pages/Checkout'
 
 function App() {
+  const dispatch = useDispatch()
+  // const status = useSelector((state) => state.items.status)
+
+  useEffect(() => {
+    dispatch(loadItems())
+  }, [dispatch])
+
+  // useEffect(() => {
+  //   console.log('req status:', status)
+  // }, [status])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <div className='App'>
+        <ScrollToTop />
+        <ToastContainer position='top-right' autoClose={3000} />
+        <Nav />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/media' element={<Media />} />
+          <Route path='/media/:id' element={<MediaSpotlight />} />
+          <Route path='/cart' element={<Cart />} />
+          <Route path='/checkout' element={<Checkout />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
+  )
 }
 
-export default App;
+export default App

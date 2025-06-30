@@ -1,70 +1,90 @@
-# Getting Started with Create React App
+# 📚 Cloud City Movie Showcase — built with React & Redux
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 🌠 Andrew Patrick Bartson - 2025
 
-## Available Scripts
+Welcome to the _Cloud-City-Movies-Showcase_ app — a demo storefront built in React and Redux Toolkit for checking out movies, new and old, complete with search, sorting, cart, and checkout features.
 
-In the project directory, you can run:
+This project was built as part of Frontend Simplified coding curriculum. The original concept was to build a demo storefront for books, which then evolved into a demo storefront for movies.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## ✨ Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- 🔍 **Live Search & Filter UI**
 
-### `npm test`
+  - Search movies by title
+  - Sort by rating, price, year, and more
+  - Filter by genre or awards
+  - Real-time search input bound to Redux state
+  - Automatic display of “no results” message and imagery
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- 💸 **Fake Price System**
 
-### `npm run build`
+  - Prices generated dynamically from IMDb vote counts
+  - Full price is algorithmically scaled from vote popularity
+  - Sale prices randomly assigned to 60% of items (at fetch time)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- 🛒 **Cart Functionality**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  - Add and remove items with quantity control
+  - Cart summary updates instantly
+  - Cart icon in NavBar shows total quantity
+  - All cart math is selector-driven (no redundant state)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- 🧱 **Skeleton Loading Experience**
 
-### `npm run eject`
+  - Custom skeleton components prevent layout shift
+  - Smooth transition from loading → content
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- 📭 **No Results UX**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  - Stylish “no_results.jpg” image and message when a search yields nothing
+  - Image and message load together to avoid flickering
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- 📦 **Checkout System (Demo Mode)**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+  - View cart items and total cost
+  - Display toast: “Demo only! Not taking orders!”
 
-## Learn More
+- 🌐 **Routing**
+  - Routes include `/media`, `/media/:id`, `/cart`, and `/checkout`
+  - URL-friendly item IDs generated from movie titles and IMDb IDs
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🧠 Challenges Overcome
 
-### Code Splitting
+- 🧩 **Rescaling IMDb vote data into plausible storefront prices**
+- 🧮 **Replacing duplicated item state with ID-based lookups using Redux selectors**
+- ⚖️ **Keeping `salePrice` logic random yet deterministic**
+- 🔄 **Fixing edge cases where “no results” UI flashed briefly before real content**
+- 💥 **Preventing UI from jumping during state transitions by controlling `status` values explicitly**
+- 💬 **Keeping the user informed through toasts, feedback messages, and dynamic cart badges**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## 🛠️ Built With
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- [React](https://reactjs.org/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+- [React Router](https://reactrouter.com/)
+- [React Toastify](https://fkhadra.github.io/react-toastify/)
+- Custom CSS for all layout and component styling
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🔮 Future Ideas
 
-### Advanced Configuration
+- Save cart to localStorage
+- Add genre filtering from live data
+- Replace IMDb API with a movie-book hybrid API (for fun)
+- Animate transitions between routes
+- Fully rename all “book” references to “item” or “media”
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+## 🙏 Special Thanks
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+To Nova (AI wingman) for clarity and code ideas, and to open-source culture for making web development fun.
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
