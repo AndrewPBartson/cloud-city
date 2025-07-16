@@ -14,47 +14,47 @@ const Cart = () => {
   return (
     <div className='cap_the_width'>
       <main className='main'>
-        <div className='media_container'>
+        <div className='std_container'>
           <div className='row'>
-            <div className='book__selected--top'>
+            <div className='item__selected--top'>
               <h2 className='cart__title'>Cart</h2>
             </div>
-            <div className='cart__header'>
-              <span className='cart__book'>Product</span>
-              <span className='cart__quantity'>Quantity</span>
-              <span className='cart__total'>Price</span>
+            <div className='labels_wrapper'>
+              <span className='product_label'>Product</span>
+              <span className='quantity_label'>Quantity</span>
+              <span className='price_label'>Price</span>
             </div>
             {smartItems.length === 0 ? (
               <div className='cart__empty'>
                 <img src={EmptyCart} alt='' className='cart__empty--img' />
                 <h2>Your cart is empty!</h2>
                 <Link to='/media'>
-                  <button className='btn'>Search for Products</button>
+                  <button className='btn'>Search for Movies</button>
                 </Link>
               </div>
             ) : (
               <div className='cart'>
                 <div className='cart__body'>
                   {smartItems.map((item) => (
-                    <div className='cart__item' key={item.id}>
-                      <div className='cart__book'>
+                    <div className='cart__item--wrapper' key={item.id}>
+                      <div className='cart__item'>
                         <img
                           src={item.url}
                           alt=''
-                          className='cart__book--img'
+                          className='cart__item--img'
                         />
-                        <div className='cart__book--info'>
-                          <span className='cart__book--title'>
+                        <div className='cart__item--info'>
+                          <span className='cart__item--title'>
                             {item.title}
                           </span>
-                          <span className='cart__book--price'>
+                          <span className='cart__item--price'>
                             $
                             {item.salePrice != null
                               ? item.salePrice.toFixed(2)
                               : item.fullPrice.toFixed(2)}
                           </span>
                           <button
-                            className='cart__book--remove'
+                            className='cart__item--remove'
                             onClick={() =>
                               dispatch(
                                 removeItem({

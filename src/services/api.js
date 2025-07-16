@@ -36,7 +36,7 @@ async function fetchMovieDetails(movieList) {
 /**
  * Fetch movies based on search query (returns full refactored results)
  * @param {string} searchQuery
- * @returns {Promise<Array>} Resolves to a list of movies with complete data
+ * @returns {Promise<Array>} Resolves to list of movies w/ complete data
  */
 
 export function fetchMovies(searchQuery) {
@@ -46,7 +46,7 @@ export function fetchMovies(searchQuery) {
       if (!data.Search) return []
 
       const totalPages = Math.min(Math.ceil(data.totalResults / 10), 4)
-      // create array of length totalPages, if totalpages = 4 => [1, 2, 3, 4]
+      // create array of length totalPages, if totalPages = 4 => [1, 2, 3, 4]
       const allPageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1)
 
       const pageFetches = allPageNumbers.map(

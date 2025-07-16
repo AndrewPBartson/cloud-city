@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 // import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addItem } from '../state/cartSlice'
+import { selectAllItemsArray } from '../state/itemsSlice'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import StarRating from './mini-components/StarRating'
@@ -11,6 +12,7 @@ import { toast } from 'react-toastify'
 
 const ItemDetails = ({ item }) => {
   const dispatch = useDispatch()
+  const allItems = useSelector(selectAllItemsArray)
   const cartItems = useSelector((state) => state.cart.cartItems)
   const inCart = cartItems.find((i) => i.id === item.id)
 
@@ -32,35 +34,35 @@ const ItemDetails = ({ item }) => {
   return (
     <div className='main_wrapper'>
       <main className='main'>
-        <div className='media_container'>
-          <div className='row'>
+        <div className='std_container'>
+          <div className='row details_row'>
             <div className='back_link_wrapper'>
-              <Link to='/media' className='book__link'>
+              <Link to='/media' className='item__link'>
                 <FontAwesomeIcon
                   icon={faArrowLeft}
-                  className='book__back--icon'
+                  className='item__back--icon'
                 />
               </Link>
-              <Link to='/media' className='book__link'>
+              <Link to='/media' className='item__link'>
                 <h2 className='back_link_title'>New Search</h2>
               </Link>
             </div>
-            <div className='book__selected'>
+            <div className='item__selected'>
               {item && item.title ? (
                 <>
-                  <figure className='book__selected--figure'>
+                  <figure className='item__selected--figure'>
                     <img
                       src={item.url}
                       alt=''
-                      className='book__selected--img'
+                      className='item__selected--img'
                     />
                   </figure>
 
-                  <div className='book__selected--description'>
-                    <h2 className='book__selected--title'>{item.title}</h2>
+                  <div className='item__selected--description'>
+                    <h2 className='item__selected--title'>{item.title}</h2>
                     <StarRating rating={item.rating} />
 
-                    <div className='book__selected--price'>
+                    <div className='item__selected--price'>
                       <Price
                         fullPrice={item.fullPrice.toFixed(2)}
                         salePrice={
@@ -68,11 +70,11 @@ const ItemDetails = ({ item }) => {
                         }
                       />
                     </div>
-                    <div className='book__summary'>
-                      <h3 className='book__summary--title'>Summary</h3>
+                    <div className='item__summary'>
+                      <h3 className='item__summary--title'>Summary</h3>
 
                       {isValidValue(item.Plot) && (
-                        <p className='book__summary--para'>{item.Plot}</p>
+                        <p className='item__summary--para'>{item.Plot}</p>
                       )}
                       {isValidValue(item.yearInt) && (
                         <div className='subtitle_wrapper'>
@@ -120,7 +122,10 @@ const ItemDetails = ({ item }) => {
                       </button>
                       {inCart && (
                         <div className='in_cart_message'>
-                          ✅ In your cart — Quantity: {inCart.quantity}
+                          ✅ In your cart
+                          <div className='green bold align-right'>
+                            Quantity: {inCart.quantity}
+                          </div>
                         </div>
                       )}
                     </div>

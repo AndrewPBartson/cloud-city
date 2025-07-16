@@ -7,4 +7,7 @@ export const store = configureStore({
     items: itemsReducer,
     cart: cartReducer,
   },
+  devTools: {
+    name: 'cloud-city', // name of instance in Redux DevTools
+  },
 })

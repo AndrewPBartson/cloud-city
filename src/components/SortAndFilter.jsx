@@ -54,7 +54,6 @@ const SortAndFilter = () => {
       <div className='genre'>
         <label className='label_text'>Filter by Genre</label>
         <select
-          className='selecter'
           id='filter_genre'
           defaultValue='All'
           onChange={handleChange(setGenreFilter)}

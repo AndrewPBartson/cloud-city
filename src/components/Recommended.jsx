@@ -19,10 +19,10 @@ const Recommended = ({ currentItem }) => {
     <section id='recommended'>
       <div className='rec_container'>
         <div className='row'>
-          <h2 className='book__selected--title--top'>
-            Recommended <span className='purple'>Media</span>
+          <h2 className='item__selected--title--top'>
+            Recommended <span className='purple'>Movies</span>
           </h2>
-          <div className='books'>
+          <div className='movies'>
             {status === 'loading' ? (
               <p>Loading...</p>
             ) : (

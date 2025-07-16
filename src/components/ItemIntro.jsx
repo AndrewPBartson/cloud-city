@@ -23,23 +23,23 @@ const ItemIntro = ({ item }) => {
 
   if (!item || !img || imageFailed) {
     return (
-      <div className='book'>
-        <div className='skeleton book__img--skeleton'></div>
-        <div className='skeleton book__title--skeleton'></div>
-        <div className='skeleton book__rating--skeleton'></div>
-        <div className='skeleton book__price--skeleton'></div>
+      <div className='movie'>
+        <div className='skeleton item__img--skeleton'></div>
+        <div className='skeleton item__title--skeleton'></div>
+        <div className='skeleton item__rating--skeleton'></div>
+        <div className='skeleton item__price--skeleton'></div>
       </div>
     )
   }
 
   return (
-    <div className='book'>
+    <div className='movie'>
       <Link to={`/media/${item.id}`}>
-        <figure className='book__img--wrapper'>
+        <figure className='item__img--wrapper'>
           <img
             src={item.url}
             alt={item.title}
-            className='book__img'
+            className='item__img'
             onError={(e) => {
               setImageFailed(true)
               e.target.onerror = null
@@ -48,12 +48,12 @@ const ItemIntro = ({ item }) => {
           />
         </figure>
       </Link>
-      <div className='book__title'>
-        <Link className='book__title--link' to={`/media/${item.id}`}>
+      <div className='item__title'>
+        <Link className='item__title--link' to={`/media/${item.id}`}>
           {item.title}
         </Link>
       </div>
-      <div className='book__ratings'>
+      <div className='item__ratings'>
         <StarRating rating={item.rating} />
       </div>
       <Price

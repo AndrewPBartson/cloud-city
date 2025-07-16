@@ -9,8 +9,8 @@ import './css/index.css'
 import ScrollToTop from './components/mini-components/ScrollToTop'
 import Nav from './components/Nav'
 import Home from './pages/Home'
-import Media from './pages/Media'
-import MediaSpotlight from './pages/MediaSpotlight'
+import Search from './pages/Search'
+import MovieSpotlight from './pages/MovieSpotlight'
 import Footer from './components/Footer'
 import Cart from './pages/Cart'
 import Checkout from './pages/Checkout'
@@ -35,8 +35,8 @@ function App() {
         <Nav />
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/media' element={<Media />} />
-          <Route path='/media/:id' element={<MediaSpotlight />} />
+          <Route path='/media' element={<Search />} />
+          <Route path='/media/:id' element={<MovieSpotlight />} />
           <Route path='/cart' element={<Cart />} />
           <Route path='/checkout' element={<Checkout />} />
         </Routes>

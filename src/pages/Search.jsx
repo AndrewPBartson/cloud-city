@@ -6,7 +6,7 @@ import SearchBar from '../components/SearchBar'
 import SortAndFilter from '../components/SortAndFilter'
 import YouAreLost from '../assets/no_results.jpg'
 
-const Media = () => {
+const Search = () => {
   const items = useSelector(selectFilteredSortedItems)
   const status = useSelector((state) => state.items.status)
   // const searchQuery = useSelector((state) => state.items.searchQuery)
@@ -53,15 +53,17 @@ const Media = () => {
   }
 
   return (
-    <div className='media_body'>
-      <main id='media_main'>
+    <div className='search_body'>
+      <main id='search_main'>
         <section>
-          <div className='media_container'>
+          <div className='search_container'>
             <div className='row'>
-              <div className='media_ui_wrapper'>
+              <div className='search_ui_wrapper'>
                 <div className='search_ui'>
                   <h2 className='section__title search_title'>
-                    Search Cloud City
+                    <span className='star'>✨</span>
+                    Search for Movies
+                    <span className='star'>✨</span>
                   </h2>
                   <SearchBar />
                 </div>
@@ -69,7 +71,7 @@ const Media = () => {
                   <SortAndFilter />
                 </div>
               </div>
-              <div className='books'>{content}</div>
+              <div className='movies'>{content}</div>
             </div>
           </div>
         </section>
@@ -78,4 +80,4 @@ const Media = () => {
   )
 }
 
-export default Media
+export default Search

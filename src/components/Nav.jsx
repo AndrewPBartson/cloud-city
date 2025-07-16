@@ -22,7 +22,7 @@ const Nav = () => {
   return (
     <nav>
       <div className='nav__container'>
-        <Link to='/'>
+        <Link to='/' className='logo_wrapper'>
           <img src={LibraryLogo} alt='' className='logo' />
         </Link>
         <ul className='nav__links'>
@@ -54,17 +54,17 @@ const Nav = () => {
           </button>
           <ul className='menu__links'>
             <li className='menu__list'>
-              <Link to='/' className='menu__link'>
+              <Link to='/' className='menu__button' onClick={closeMenu}>
                 Home
               </Link>
             </li>
             <li className='menu__list'>
-              <Link to='/media' className='menu__link'>
-                Books
+              <Link to='/media' className='menu__button' onClick={closeMenu}>
+                Search
               </Link>
             </li>
             <li className='menu__list'>
-              <Link to='/cart' className='menu__link'>
+              <Link to='/cart' className='menu__button' onClick={closeMenu}>
                 Cart
               </Link>
             </li>

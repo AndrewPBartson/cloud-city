@@ -1,9 +1,9 @@
 const Price = ({ fullPrice, salePrice }) => {
   return (
-    <div className='book__price'>
+    <div className='item__price'>
       {salePrice ? (
         <>
-          <span className='book__price--normal'>${fullPrice}</span>${salePrice}
+          <span className='item__price--normal'>${fullPrice}</span>${salePrice}
         </>
       ) : (
         <>${fullPrice}</>

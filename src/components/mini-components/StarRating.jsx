@@ -27,7 +27,7 @@ const StarRating = ({ rating }) => {
   ]
 
   return (
-    <div className='book__ratings'>
+    <div className='item__ratings'>
       <div className='star-wrapper'>{starIcons}</div>
       <span className='rating_text'>{rating}</span>
     </div>

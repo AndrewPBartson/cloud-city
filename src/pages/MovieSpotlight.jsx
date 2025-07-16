@@ -1,15 +1,17 @@
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
+import { selectAllItemsArray } from '../state/itemsSlice'
 
 import ItemDetails from '../components/ItemDetails'
 import Recommended from '../components/Recommended'
 
-const MediaSpotlight = () => {
+const MovieSpotlight = () => {
   const { id } = useParams()
-  const items = useSelector((state) => state.items.items)
+  const allItems = useSelector(selectAllItemsArray)
+  // const items = useSelector((state) => state.items.items)
   let item = ''
-  if (items || items.length > 0) {
-    item = items.find((item) => item.id === String(id))
+  if (allItems || allItems.length > 0) {
+    item = allItems.find((item) => item.id === String(id))
   }
 
   return (
@@ -19,4 +21,4 @@ const MediaSpotlight = () => {
     </div>
   )
 }
-export default MediaSpotlight
+export default MovieSpotlight
