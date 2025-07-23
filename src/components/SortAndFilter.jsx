@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { setSort, setGenreFilter, setAwardFilter } from '../state/itemsSlice'
+import { setSort, setGenreFilter, setAwardFilter } from '../features/itemsSlice'
 
 const SortAndFilter = () => {
   const dispatch = useDispatch()

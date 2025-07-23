@@ -1,13 +1,11 @@
 import { useSelector } from 'react-redux'
 import ItemIntro from './ItemIntro'
-import { selectAllItemsArray } from '../state/itemsSlice'
+import { selectAllItemsArray } from '../features/itemsSlice'
 
 const Featured = () => {
   const status = useSelector((state) => state.items.status)
-  // const error = useSelector((state) => state.items.error)
   const allItems = useSelector(selectAllItemsArray)
   const featuredItems = allItems.filter((item) => item.ratingInt >= 30)
-  console.log('Featured items:', featuredItems)
 
   return (
     <section id='featured'>
@@ -25,7 +23,9 @@ const Featured = () => {
               featuredItems
                 .filter((item) => item.rating > 3.0)
                 .slice(0, 4)
-                .map((item) => <ItemIntro item={item} key={item.id} />)
+                .map((item, idx) => (
+                  <ItemIntro item={item} key={`${item.id}-${idx}`} />
+                ))
             )}
           </div>
         </div>

@@ -75,17 +75,17 @@ export const loadItems = createAsyncThunk(
       let savedItems = loadFromLocalStorage('items') || []
       let newQuery = searchTerm?.trim()
       let savedQuery = loadFromLocalStorage('searchQuery') || ''
-      console.log('inside level 1')
-      console.log('savedQuery', savedQuery)
+      // console.log('inside level 1')
+      // console.log('savedQuery', savedQuery)
 
       if (newQuery) {
-        console.log('inside level 2')
+        // console.log('inside level 2')
         saveToLocalStorage('searchQuery', newQuery)
         currentItems = await fetchMovies(newQuery)
       } else {
         // newQuery is empty
-        console.log('inside level 3')
-        console.log('savedQuery', savedQuery)
+        // console.log('inside level 3')
+        // console.log('savedQuery', savedQuery)
         if (savedItems.length > 0) {
           currentItems = savedItems
           // console.log('inside level 4')
@@ -93,17 +93,17 @@ export const loadItems = createAsyncThunk(
           // if no newQuery and no savedItems, check for savedQuery
           // console.log('inside level 5')
           if (savedQuery) {
-            console.log('savedQuery', savedQuery)
-            console.log('inside level 6')
+            // console.log('savedQuery', savedQuery)
+            // console.log('inside level 6')
             currentItems = await fetchMovies(savedQuery)
           }
           // if currentItems is still empty
           // no new query / no saved items / no (valid) savedQuery
           if (currentItems.length === 0) {
             // search by user location
-            console.log('inside level 7')
+            // console.log('inside level 7')
             let userLocation = await getUserLocation()
-            console.log('inside level 7.5', userLocation)
+            // console.log('inside level 7.5', userLocation)
             saveToLocalStorage('searchQuery', userLocation)
             currentItems = await fetchMovies(userLocation)
           }
@@ -113,8 +113,8 @@ export const loadItems = createAsyncThunk(
       if (currentItems.length !== 0) {
         saveToLocalStorage('items', currentItems)
       }
-      console.log('items:', currentItems)
-      console.log('outside again')
+      // console.log('items:', currentItems)
+      // console.log('outside again')
 
       return currentItems
     } catch (err) {

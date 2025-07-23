@@ -1,8 +1,6 @@
 import { Link } from 'react-router-dom'
-// import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addItem } from '../state/cartSlice'
-import { selectAllItemsArray } from '../state/itemsSlice'
+import { addItem } from '../features/cartSlice'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import StarRating from './mini-components/StarRating'
@@ -12,16 +10,8 @@ import { toast } from 'react-toastify'
 
 const ItemDetails = ({ item }) => {
   const dispatch = useDispatch()
-  const allItems = useSelector(selectAllItemsArray)
   const cartItems = useSelector((state) => state.cart.cartItems)
   const inCart = cartItems.find((i) => i.id === item.id)
-
-  // useEffect(() => {
-  //   if (item) {
-  //     console.log('item.salePrice', item.salePrice)
-  //     console.log('item.fullPrice', item.fullPrice)
-  //   }
-  // }, [item])
 
   const handleAddToCart = () => {
     dispatch(addItem({ id: item.id, quantity: 1 }))

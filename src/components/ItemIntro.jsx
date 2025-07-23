@@ -17,10 +17,6 @@ const ItemIntro = ({ item }) => {
     }
   }, [item])
 
-  // useEffect(() => {
-  //   console.log('req status:', status)
-  // }, [status])
-
   if (!item || !img || imageFailed) {
     return (
       <div className='movie'>

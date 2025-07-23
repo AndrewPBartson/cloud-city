@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { selectAllItemsArray } from '../state/itemsSlice'
+import { selectAllItemsArray } from '../features/itemsSlice'
 
 import ItemDetails from '../components/ItemDetails'
 import Recommended from '../components/Recommended'

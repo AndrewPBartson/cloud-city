@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { selectFilteredSortedItems } from '../state/itemsSlice'
+import { selectFilteredSortedItems } from '../features/itemsSlice'
 import ItemIntro from '../components/ItemIntro'
 import SearchBar from '../components/SearchBar'
 import SortAndFilter from '../components/SortAndFilter'
@@ -9,7 +9,7 @@ import YouAreLost from '../assets/no_results.jpg'
 const Search = () => {
   const items = useSelector(selectFilteredSortedItems)
   const status = useSelector((state) => state.items.status)
-  // const searchQuery = useSelector((state) => state.items.searchQuery)
+
   const [imageLoaded, setImageLoaded] = useState(false)
 
   const isLoading = status === 'loading'
@@ -49,7 +49,7 @@ const Search = () => {
   } else {
     content = items
       .slice(0, 20)
-      .map((item) => <ItemIntro item={item} key={item.id} />)
+      .map((item, idx) => <ItemIntro item={item} key={`${item.id}-${idx}`} />)
   }
 
   return (

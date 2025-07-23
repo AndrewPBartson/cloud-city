@@ -26,8 +26,8 @@ const Recommended = ({ currentItem }) => {
             {status === 'loading' ? (
               <p>Loading...</p>
             ) : (
-              recommendedItems.map((rec) => (
-                <ItemIntro item={rec} key={rec.id} />
+              recommendedItems.map((rec, idx) => (
+                <ItemIntro item={rec} key={`${rec.id}-${idx}`} />
               ))
             )}
           </div>

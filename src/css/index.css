@@ -98,6 +98,9 @@ button:active {
   align-items: center;
   margin: 0 auto;
 }
+.nav__links {
+  margin-left: 12px;
+}
 .nav__link {
   text-decoration: none;
   font-size: 20px;
@@ -106,7 +109,7 @@ button:active {
   color: #7342d6;
 }
 .nav__list {
-  margin-left: 16px;
+  margin-left: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -114,12 +117,16 @@ button:active {
 .nav__link:hover {
   text-decoration: underline;
 }
-.nav__link--primary {
-  border: 2px solid #7342d6;
+
+.auth_btn {
+  border: 1px solid gray;
   border-radius: 4px;
 }
-.nav__link--primary:hover {
+.auth_btn:hover {
   text-decoration: none;
+}
+.login_btn {
+  margin-left: 6px;
 }
 .nav__icon {
   display: flex;
@@ -183,9 +190,10 @@ button:active {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 32px;
 }
 .menu__list {
-  padding: 32px 0;
+  padding: 20px 0;
   list-style: none;
 }
 .menu__link {
@@ -194,10 +202,15 @@ button:active {
 }
 .btn__menu--close {
   position: absolute;
-  top: 10px;
-  right: 20px;
-  padding: 8px;
-  color: white;
+  top: 35px;
+  right: 35px;
+  width: 50px;
+  height: 50px;
+  padding: 6px;
+  background-color: white;
+  color: #7342d6;
+  border: 2px solid #7342d6;
+  border-radius: 8px;
 }
 /* Large touch-friendly buttons */
 .menu__button {
@@ -463,15 +476,10 @@ header {
   max-width: 250px;
   transition: all 300ms ease;
 }
-.item__img--skeleton {
-  width: 100%;
-  max-width: 250px;
-  height: 320px;
-}
 .skeleton {
   border-radius: 4px;
-  background-color: rgb(227, 227, 227) !important;
   margin-bottom: 8px;
+  background-color: rgb(227, 227, 227) !important;
   animation: pulse 1s infinite;
 }
 @keyframes pulse {
@@ -485,6 +493,12 @@ header {
     opacity: 1;
   }
 }
+
+.item__img--skeleton {
+  width: 100%;
+  max-width: 250px;
+  height: 320px;
+}
 .item__title--skeleton {
   height: 21px;
   width: 100%;
@@ -497,6 +511,7 @@ header {
   width: 200px;
   height: 19px;
 }
+
 .item__link {
   color: #242424;
 }
@@ -1123,6 +1138,10 @@ h2.back_link_title {
   justify-content: center;
 }
 
+.Toastify {
+  z-index: 9999 !important;
+}
+
 /* SMALL PHONES, TABLETS, LARGE SMARTPHONES */
 @media (max-width: 768px) {
   .logo_wrapper {
@@ -1130,6 +1149,10 @@ h2.back_link_title {
   }
   .logo {
     max-width: 100%;
+  }
+  .nav__list {
+    font-size: 18px;
+    margin-left: 4px;
   }
   header {
     min-height: 900px;

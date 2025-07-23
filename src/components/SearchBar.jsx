@@ -2,8 +2,8 @@ import { useSelector } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch } from 'react-redux'
-import { loadItems } from '../state/itemsSlice'
-import { setSearchQuery } from '../state/itemsSlice'
+import { loadItems } from '../features/itemsSlice'
+import { setSearchQuery } from '../features/itemsSlice'
 
 const SearchBar = () => {
   const dispatch = useDispatch()
@@ -17,7 +17,7 @@ const SearchBar = () => {
     try {
       const resultAction = await dispatch(loadItems(searchTerm))
       if (loadItems.fulfilled.match(resultAction)) {
-        console.log('Search successful:', resultAction.payload)
+        console.log('Search results:', resultAction.payload)
       }
     } catch (err) {
       console.error('Search failed:', err)

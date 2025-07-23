@@ -1,0 +1,101 @@
+.user-badge-wrapper {
+  position: relative;
+}
+
+.user-badge {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 9999px;
+  width: 36px;
+  height: 36px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+}
+
+.dropdown-icon {
+  font-size: 0.6rem;
+  margin-left: 0.25rem;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 44px;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  list-style: none;
+  padding: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-menu li {
+  padding: 0.25rem 0.75rem;
+  cursor: pointer;
+}
+
+.dropdown-menu li:hover {
+  background-color: #f0f0f0;
+}
+
+.auth_icon_wrapper {
+  display: flex;
+}
+.auth_icon {
+  margin-right: 8px;
+  color: gray;
+}
+
+/* skeleton loading styles */
+
+.skeleton-button,
+.skeleton-badge {
+  border-radius: 6px;
+  background-color: rgb(227, 227, 227) !important;
+  /* Alternate animation for future reference
+  background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite; */
+  animation: pulsing 0.8s infinite;
+}
+
+.skeleton-button {
+  width: 80px;
+  height: 32px;
+  margin: 4px 10px 0 10px;
+}
+
+.skeleton-badge {
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  margin-top: 2px;
+}
+
+/* Alternate animation - for future reference */
+/* @keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+} */
+
+@keyframes pulsing {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}

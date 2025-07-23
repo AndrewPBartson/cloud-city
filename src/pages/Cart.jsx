@@ -1,8 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { removeItem, updateQuantity } from '../state/cartSlice'
+import { removeItem, updateQuantity } from '../features/cartSlice'
 import EmptyCart from '../assets/empty_cart.svg'
 import { Link } from 'react-router-dom'
-import { selectSmartCartItems, selectCartSummary } from '../state/cartSelectors'
+import {
+  selectSmartCartItems,
+  selectCartSummary,
+} from '../features/cartSelectors'
 
 const Cart = () => {
   const dispatch = useDispatch()
@@ -35,8 +38,11 @@ const Cart = () => {
             ) : (
               <div className='cart'>
                 <div className='cart__body'>
-                  {smartItems.map((item) => (
-                    <div className='cart__item--wrapper' key={item.id}>
+                  {smartItems.map((item, idx) => (
+                    <div
+                      className='cart__item--wrapper'
+                      key={`${item.id}-${idx}`}
+                    >
                       <div className='cart__item'>
                         <img
                           src={item.url}

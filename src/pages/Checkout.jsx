@@ -1,7 +1,10 @@
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import EmptyCart from '../assets/empty_cart.svg'
-import { selectSmartCartItems, selectCartSummary } from '../state/cartSelectors'
+import {
+  selectSmartCartItems,
+  selectCartSummary,
+} from '../features/cartSelectors'
 import { toast } from 'react-toastify'
 
 const Checkout = () => {
@@ -52,10 +55,10 @@ const Checkout = () => {
                       </div>
                     ) : (
                       <div>
-                        {smartItems.map((item) => (
+                        {smartItems.map((item, idx) => (
                           <div
                             className='checkout__item--wrapper'
-                            key={item.id}
+                            key={`${item.id}-${idx}`}
                           >
                             <div className='checkout__item'>
                               <img
