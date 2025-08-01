@@ -58,7 +58,7 @@ export const loadItems = createAsyncThunk(
       if (currentItems.length !== 0) {
         saveToLocalStorage('items', currentItems)
       }
-      // console.log('items:', currentItems)
+      console.log('items:', currentItems)
       // console.log('outside again')
 
       return currentItems

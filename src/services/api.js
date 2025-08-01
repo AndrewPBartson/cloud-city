@@ -45,7 +45,7 @@ export function fetchMovies(searchQuery) {
     .then((data) => {
       if (!data.Search) return []
 
-      const totalPages = Math.min(Math.ceil(data.totalResults / 10), 4)
+      const totalPages = Math.min(Math.ceil(data.totalResults / 10), 6)
       // create array of length totalPages, if totalPages = 4 => [1, 2, 3, 4]
       const allPageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1)
 
