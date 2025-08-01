@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { selectFilteredSortedItems } from '../features/itemsSlice'
+import { selectFilteredSortedItems } from '../features/itemsSelectors'
 import ItemIntro from '../components/ItemIntro'
 import SearchBar from '../components/SearchBar'
 import SortAndFilter from '../components/SortAndFilter'

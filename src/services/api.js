@@ -5,7 +5,7 @@ const BASE_URL = `https://www.omdbapi.com/?apikey=${OMDB_API_KEY}`
 
 /**
  * Fetch full movie details for initial array of movies.
- * @param {Array} movieList - inital array of movies w/ minimal details
+ * @param {Array} movieList - initial array of movies w/ minimal details
  * @returns {Promise<Array>} Resolves to array of movies with full details
  */
 

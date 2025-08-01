@@ -2,61 +2,6 @@ import { createSlice, createAsyncThunk, createSelector } from '@reduxjs/toolkit'
 import { fetchMovies, getUserLocation } from '../services/api'
 import { loadFromLocalStorage, saveToLocalStorage } from '../utils/dataHandlers'
 
-// this is a selector and a pure function. It is not a reducer)
-export const selectFilteredSortedItems = (state) => {
-  // must copy state bc sort is mutating
-  let items = [...state.items.items]
-  const { genre, awards } = state.items.filters
-  const sort = state.items.sort
-
-  // Filter by genre
-  if (genre && genre !== 'All') {
-    items = items.filter((item) => item.Genre?.includes(genre))
-  }
-
-  // Filter by awards
-  if (awards) {
-    items = items.filter((item) => item.Awards && item.Awards !== 'N/A')
-  }
-
-  // Sort
-  switch (sort) {
-    case 'PriceAscending':
-      items.sort(
-        (a, b) => (a.salePrice || a.fullPrice) - (b.salePrice || b.fullPrice)
-      )
-      break
-    case 'PriceDescending':
-      items.sort(
-        (a, b) => (b.salePrice || b.fullPrice) - (a.salePrice || a.fullPrice)
-      )
-      break
-    case 'Rating':
-      items.sort((a, b) => b.ratingInt - a.ratingInt)
-      break
-    case 'Year':
-      items.sort((a, b) => b.yearInt - a.yearInt)
-      break
-    case 'YearOld':
-      items.sort((a, b) => a.yearInt - b.yearInt)
-      break
-    case 'BoxOffice':
-      items.sort((a, b) => b.boxOfficeInt - a.boxOfficeInt)
-      break
-    case 'Title':
-      items.sort((a, b) => a.title.localeCompare(b.title))
-      break
-    case 'IMDB_votes':
-    case 'Default':
-      items.sort((a, b) => b.imdbVotesInt - a.imdbVotesInt)
-      break
-    default:
-      break
-  }
-
-  return items
-}
-
 const selectAllItemsObj = (state) => state.items.allItems
 
 // convert allItems object to array
